@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning App</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #172033;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .brand span {
+            color: #7c9cff;
+        }
+
+        .status {
+            font-size: 13px;
+            color: #bbf7d0;
+            background: #183b32;
+            padding: 8px 12px;
+            border-radius: 20px;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 22px;
+        }
+
+        .welcome {
+            margin-bottom: 35px;
+        }
+
+        .welcome h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .welcome p {
+            color: #697386;
+            line-height: 1.7;
+        }
+
+        .section-title {
+            font-size: 21px;
+            margin-bottom: 18px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e2e7f0;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(20, 35, 60, 0.04);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e8eeff;
+            border-radius: 12px;
+            font-size: 24px;
+        }
+
+        .card h3 {
+            font-size: 19px;
+            margin-bottom: 6px;
+        }
+
+        .card-header p,
+        .description {
+            color: #697386;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .upload-area {
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 35px 20px;
+            text-align: center;
+            background: #fafbff;
+        }
+
+        .upload-symbol {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .upload-area h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .upload-area p {
+            font-size: 13px;
+            color: #697386;
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: block;
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto 18px;
+            font-size: 13px;
+        }
+
+        .preview {
+            display: none;
+            max-width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 9px;
+            background: #315ee7;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #244ac2;
+        }
+
+        .button:disabled {
+            background: #aab7d8;
+            cursor: not-allowed;
+        }
+
+        .notice {
+            margin-top: 18px;
+            padding: 13px;
+            border-radius: 9px;
+            background: #fff7e6;
+            color: #8a5b12;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            color: #8a94a6;
+            font-size: 12px;
+            padding: 25px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .brand {
+                font-size: 17px;
+            }
+
+            main {
+                margin-top: 30px;
+                padding: 0 15px;
+            }
+
+            .welcome h1 {
+                font-size: 26px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">Deep Learning <span>App</span></div>
+    <div class="status">● Oturum açık</div>
+</header>
+
+<main>
+
+    <section class="welcome">
+        <h1>Hoş geldin!</h1>
+        <p>
+            Yapay zekâ destekli görsel sınıflandırma paneline hoş geldin.
+            Görselini seç ve analiz sürecine hazırlan.
+        </p>
+    </section>
+
+    <h2 class="section-title">Yapay Zekâ Modülleri</h2>
+
+    <section class="card">
+        <div class="card-header">
+            <div class="icon">🧠</div>
+            <div>
+                <h3>Image Classification</h3>
+                <p>Derin öğrenme ile görsel sınıflandırma</p>
+            </div>
+        </div>
+
+        <p class="description">
+            Bu modül, yüklenen görselleri eğitilmiş bir yapay zekâ
+            modeli aracılığıyla sınıflandırmak için tasarlanmıştır.
+        </p>
+
+        <div class="upload-area">
+            <div class="upload-symbol">🖼️</div>
+            <h4>Analiz etmek istediğin görseli seç</h4>
+            <p>PNG, JPG veya JPEG formatındaki görselleri kullanabilirsin.</p>
+
+            <input
+                    class="file-input"
+                    type="file"
+                    id="imageInput"
+                    accept="image/png, image/jpeg"
+            >
+
+            <div id="imageContainer" style="display: none; position: relative; width: fit-content; max-width: 100%; margin: 20px auto;">
+                <img id="imagePreview" alt="Seçilen görsel"
+                     style="display: block; max-width: 100%; max-height: 400px; border-radius: 10px;">
+                <canvas id="detectionCanvas"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                </canvas>
+            </div>
+
+            <button
+                    class="button"
+                    id="analyzeButton"
+                    type="button"
+                    disabled
+            >
+                Analiz Et
+            </button>
+
+            <p id="fileMessage" style="margin-top: 15px;"></p>
+        </div>
+
+        <div class="notice">
+            Bilgi: Görsel seçme ve önizleme özelliği şu anda çalışır.
+            Yapay zekâ analizi, eğitilmiş model uygulamaya bağlandığında
+            etkinleştirilecektir.
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    Deep Learning App · Görsel Sınıflandırma Sistemi
+</footer>
+
+<script>
+
+    const imageInput = document.getElementById("imageInput");
+    const imagePreview = document.getElementById("imagePreview");
+    const analyzeButton = document.getElementById("analyzeButton");
+    const fileMessage = document.getElementById("fileMessage");
+    const imageContainer = document.getElementById("imageContainer");
+    const detectionCanvas = document.getElementById("detectionCanvas");
+
+    let previewUrl = null;
+
+    imageInput.addEventListener("change", function () {
+        const file = imageInput.files[0];
+
+        if (previewUrl) {
+            URL.revokeObjectURL(previewUrl);
+            previewUrl = null;
+        }
+
+        imageContainer.style.display = "none";
+        detectionCanvas.getContext("2d").clearRect(
+            0, 0, detectionCanvas.width, detectionCanvas.height
+        );
+        analyzeButton.disabled = true;
+        fileMessage.textContent = "";
+
+        if (!file) {
+            return;
+        }
+
+        if (!["image/png", "image/jpeg"].includes(file.type)) {
+            fileMessage.textContent = "Lütfen PNG veya JPG formatında bir görsel seç.";
+            imageInput.value = "";
+            return;
+        }
+
+        previewUrl = URL.createObjectURL(file);
+        imagePreview.src = previewUrl;
+
+        imagePreview.onload = function () {
+            imageContainer.style.display = "block";
+
+            detectionCanvas.width = imagePreview.naturalWidth;
+            detectionCanvas.height = imagePreview.naturalHeight;
+        };
+
+        analyzeButton.disabled = false;
+        fileMessage.textContent = "Görsel seçildi.";
+    });
+
+    function drawDetections(detections) {
+        const context = detectionCanvas.getContext("2d");
+
+        context.clearRect(
+            0, 0, detectionCanvas.width, detectionCanvas.height
+        );
+
+        detections.forEach(function (item) {
+            const x = item.x * detectionCanvas.width;
+            const y = item.y * detectionCanvas.height;
+            const width = item.width * detectionCanvas.width;
+            const height = item.height * detectionCanvas.height;
+
+            context.strokeStyle = "#ff3030";
+            context.lineWidth = Math.max(
+                2,
+                detectionCanvas.width / 300
+            );
+
+            context.strokeRect(x, y, width, height);
+
+            const label =
+                item.label + " %" + item.confidence.toFixed(1);
+
+            context.font = "bold 16px Arial";
+
+            const textWidth = context.measureText(label).width;
+            const labelHeight = 24;
+
+            context.fillStyle = "#ff3030";
+            context.fillRect(
+                x,
+                Math.max(0, y - labelHeight),
+                textWidth + 12,
+                labelHeight
+            );
+
+            context.fillStyle = "#ffffff";
+            context.fillText(
+                label,
+                x + 6,
+                Math.max(17, y - 7)
+            );
+        });
+    }
+
+    analyzeButton.addEventListener("click", async function () {
+        const file = imageInput.files[0];
+
+        if (!file) {
+            fileMessage.textContent = "Önce bir görsel seç.";
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("image", file);
+
+        analyzeButton.disabled = true;
+        fileMessage.textContent = "Görsel backend'e gönderiliyor...";
+
+        try {
+            const response = await fetch("/api/images/analyze", {
+                method: "POST",
+                body: formData
+            });
+
+
+            const responseText = await response.text();
+
+            let result;
+
+            try {
+                result = JSON.parse(responseText);
+            } catch (error) {
+                console.error("Sunucudan gelen ham cevap:", responseText);
+                throw new Error(
+                    "Sunucu geçerli JSON döndürmedi. HTTP durumu: " +
+                    response.status
+                );
+            }
+
+            if (!response.ok) {
+                throw new Error(
+                    result.message || "Görsel analiz edilemedi."
+                );
+            }
+
+
+            if (!response.ok) {
+                throw new Error(result.message || "Görsel gönderilemedi.");
+            }
+
+
+            if (!result.detections || result.detections.length === 0) {
+                drawDetections([]);
+
+                fileMessage.textContent =
+                    "Güven eşiğini geçen bir nesne bulunamadı.";
+            } else {
+                drawDetections(result.detections);
+
+                fileMessage.textContent =
+                    "Bulunan nesneler: " +
+                    result.detections
+                        .map(item =>
+                            item.label + " (%" +
+                            item.confidence.toFixed(1) + ")"
+                        )
+                        .join(", ");
+            }
+
+        } catch (error) {
+            fileMessage.textContent = "Hata: " + error.message;
+        } finally {
+            analyzeButton.disabled = false;
+        }
+    });
+
+</script>
+
+</body>
+</html>

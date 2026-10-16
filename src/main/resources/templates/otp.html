@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Doğrulama | Deep Learning App</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #101827, #203451);
+        }
+
+        .otp-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            background: white;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .icon {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #172033;
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #687386;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d6dce5;
+            border-radius: 9px;
+            font-size: 22px;
+            text-align: center;
+            letter-spacing: 8px;
+            margin-bottom: 18px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #315ee7;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #244ac2;
+        }
+
+        .footer {
+            margin-top: 24px;
+            color: #8a94a6;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="otp-container">
+
+    <div class="icon">🔐</div>
+
+    <h1>OTP Doğrulama</h1>
+
+    <p>
+        Giriş işlemini tamamlamak için 6 haneli kodu gir.
+
+    </p>
+
+    <form action="/verify-otp" method="post">
+        <p th:if="${error}"
+           th:text="${error}"
+           style="color: #dc2626; margin-bottom: 15px;">
+        </p>
+        <input
+                type="text"
+                name="otp"
+                placeholder="000000"
+                inputmode="numeric"
+                pattern="[0-9]{6}"
+                minlength="6"
+                maxlength="6"
+                autocomplete="one-time-code"
+                aria-label="6 haneli OTP kodu"
+                required
+        >
+
+        <button type="submit">Kodu Doğrula</button>
+    </form>
+
+    <div class="footer">
+        Deep Learning App · İki Aşamalı Giriş
+    </div>
+
+</div>
+
+</body>
+</html>
